@@ -2,5 +2,12 @@
     <string name="app_name">Not Forgot</string>
     <string name="noplans">Пока что у вас нет никаких дел.\n Хорошего отдыха!</string>
     <string name="loginpdch">Есть аккаунт? <u><font color='#1554F6'>Войти</font></u></string>
-    <string name="createpdch">Нет аккаунта? <u><font color='#1554F6'>Зарегистрироваться</font></u></string>
+    <string name="createpdch">Нет аккаунта? <font color='#1554F6'>Зарегистрироваться</font></string>
+
+    <string-array name="prioritet">
+        <item>Срочно</item>
+        <item>Важно</item>
+        <item>Нужно</item>
+        <item>Пофиг</item>
+    </string-array>
 </resources>

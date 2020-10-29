@@ -32,7 +32,7 @@
                 android:fontFamily="@font/nunito"
                 android:text="Создать аккаунт"
                 android:textAlignment="viewStart"
-                android:textColor="#DE000000"
+                android:textColor="@color/toolBarColor"
                 android:textSize="20sp" />
 
 
@@ -59,7 +59,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:hint="E-mail"
-        android:textColorHint="#8E8E8E"
+        android:textColorHint="@color/grayHint"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:hint="Пароль"
-        android:textColorHint="#8E8E8E"
+        android:textColorHint="@color/grayHint"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
-            android:textColor="#202020"
+            android:textColor="@color/darkGrayColor"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +110,7 @@
         android:fontFamily="@font/nunito"
         android:text="@string/createpdch"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="@color/basicBlack"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
         android:layout_weight="1"
         android:fontFamily="@font/nunito"
         android:text="СОЗДАТЬ"
-        app:backgroundTint="#292929"
+        app:backgroundTint="@color/gray29"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="248dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FAFAFA"
+    android:background="@color/whiteBack"
     android:orientation="vertical"
     android:paddingHorizontal="16dp">
 
@@ -21,25 +21,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
-        app:boxStrokeColor="#03A9F4"
+        app:boxStrokeColor="@color/boxColor"
         app:counterEnabled="true"
-        app:counterMaxLength="50"
+        app:counterMaxLength="140"
         app:counterTextColor="@color/hintColor54">
 
         <EditText
+            android:id="@+id/addCategoryEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:backgroundTint="#FAFAFA"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/whiteBack"
             android:hint="Введите категорию"
-            android:maxLength="50"
+            android:maxLength="140"
+            android:paddingLeft="0dp"
+            android:paddingBottom="0dp"
+
+
             android:textColor="@color/basicBlack"
             android:textColorHint="@color/hintColor54"
-            android:textSize="16sp"
-
-
-            />
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cancelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="11dp"
+            android:fontFamily="@font/nunito"
+            android:paddingBottom="8dp"
+            android:text="ОТМЕНА"
+            android:textColor="@color/boxColor"
+            app:layout_constraintEnd_toStartOf="@+id/saveTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/saveTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/nunito"
+            android:paddingBottom="8dp"
+            android:text="СОХРАНИТЬ"
+            android:textColor="@color/boxColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

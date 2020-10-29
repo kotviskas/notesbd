@@ -5,4 +5,17 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="basicBlack">#000000</color>
     <color name="hintColor54">#8A000000</color>
+    <color name="greenCard">#52CC57</color>
+    <color name="greenCheck">#69B76C</color>
+    <color name="yellowCard">#FFD130</color>
+    <color name="redCard">#FF685C</color>
+    <color name="blueCard">#6579EA</color>
+    <color name="toolBarColor">#DE000000</color>
+    <color name="grayText">#6C6C6C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grayHint">#8E8E8E</color>
+    <color name="darkGrayColor">#202020</color>
+    <color name="gray29">#292929</color>
+    <color name="whiteBack">#FAFAFA</color>
+    <color name="boxColor">#1554F6</color>
 </resources>

@@ -22,18 +22,36 @@
             android:elevation="2dp"
             android:minHeight="?attr/actionBarSize">
 
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="80dp"
-                android:layout_height="27dp"
-                android:layout_gravity="center"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                android:layout_marginEnd="290dp"
-                android:fontFamily="@font/nunito"
-                android:text="Заметка"
-                android:textAlignment="viewStart"
-                android:textColor="#DE000000"
-                android:textSize="20sp" />
+                <ImageView
+                    android:id="@+id/backImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/back" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginStart="34dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Заметка"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/toolBarColor"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/backImg"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -69,7 +87,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/noteNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -83,7 +101,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/changeImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -93,31 +111,31 @@
                     app:srcCompat="@drawable/edit_24px_outlined" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/categoryNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/nunito"
                     android:text="Учеба"
-                    android:textColor=" #6C6C6C"
+                    android:textColor="@color/grayText"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                    app:layout_constraintTop_toBottomOf="@+id/noteNameTextView" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/checkTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito"
                     android:text="Выполнено"
-                    android:textColor="#69B76C"
+                    android:textColor="@color/greenCheck"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                    app:layout_constraintTop_toBottomOf="@+id/noteNameTextView" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -125,11 +143,57 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna wirl Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna wirl"
-                    android:textColor="#DE000000"
+                    android:textColor="@color/toolBarColor"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    app:layout_constraintTop_toBottomOf="@+id/categoryNameTextView" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTextView"
+                    app:srcCompat="@drawable/query_builder_24px_outlined" />
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="До 21.09.2020"
+                    android:textColor="@color/grayText"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/textTextView" />
+
+                <ImageView
+                    android:id="@+id/prioritetImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTextView"
+                    app:srcCompat="@drawable/prioretetshape" />
+
+                <TextView
+                    android:id="@+id/prioritetTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="Срочно"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTextView" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
