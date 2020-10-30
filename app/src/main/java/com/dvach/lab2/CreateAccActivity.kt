@@ -54,6 +54,7 @@ class CreateAccActivity : AppCompatActivity() {
                     user.userName = nameText.text.toString();
                     user.password = passwordText.text.toString();
                     AppDatabase.getDatabase(this).userDao().insert(user)
+                    user = AppDatabase.getDatabase(this).userDao().getUserByEmail(user.email!!)!!
                     saveText()
                     val i = Intent(this, MainActivity::class.java)
                     i.putExtra("user", user)

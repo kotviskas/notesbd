@@ -13,9 +13,9 @@
     </style>
 
     <style name="InputText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">#292929</item>
+        <item name="boxStrokeColor">@color/gray29</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="hintTextColor">#292929</item>
+        <item name="hintTextColor">@color/gray29</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusTopStart">8dp</item>

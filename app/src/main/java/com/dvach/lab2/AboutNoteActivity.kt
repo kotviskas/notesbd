@@ -36,7 +36,10 @@ class AboutNoteActivity : AppCompatActivity() {
             val i = Intent(this, NoteActivity::class.java)
             i.putExtra("note",note)
             i.putExtra("user",user)
+
             startActivity(i)
+            finish()
+
         }
 
 

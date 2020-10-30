@@ -32,7 +32,6 @@
 
             android:layout_height="wrap_content"
             android:backgroundTint="@color/whiteBack"
-            android:hint="Введите категорию"
             android:maxLength="140"
             android:paddingLeft="0dp"
             android:paddingBottom="0dp"

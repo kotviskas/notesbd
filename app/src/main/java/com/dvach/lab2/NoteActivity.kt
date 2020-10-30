@@ -34,8 +34,9 @@ class NoteActivity : AppCompatActivity() {
         var category = Category()
         var categoryList: ArrayList<String> =
             AppDatabase.getDatabase(this).CategoryDao().getAllNames() as ArrayList<String>
-
-
+        if (kaef == false) {
+            categoryList.add("Категория задачи")
+        }
         val intent = intent
         if (intent.hasExtra("note")) {
             note = intent.getSerializableExtra("note") as Note
@@ -113,6 +114,7 @@ class NoteActivity : AppCompatActivity() {
         }
 
         addCategory.setOnClickListener {
+
             val dialog = LayoutInflater.from(this).inflate(R.layout.dialog_layout, null)
 
             val builder = AlertDialog.Builder(this)
@@ -125,6 +127,10 @@ class NoteActivity : AppCompatActivity() {
                 category.categoryUser = intent.getSerializableExtra("user") as User
                 AppDatabase.getDatabase(this).CategoryDao().insert(category)
                 categoryList.add(category.categoryName)
+                if (!kaef){
+                    categoryList.removeAt(0)
+                }
+                kaef = true
                 adapter2.notifyDataSetChanged();
             }
 
@@ -138,7 +144,7 @@ class NoteActivity : AppCompatActivity() {
         saveNoteBtn.setOnClickListener {
             var validation= InputValidation(this)
             if(validation.isEditTextFilled(nameEditText,"Введите заголовок") && validation.isInputEditTextFilled(noteTextEditText,emaiInputLayout,"Добавьте описание")
-                && validation.isSpinnerFilled(spinner2, "")) {
+                && validation.isSpinnerFilled(spinner2, "") && note.category != "Категория задачи") {
                 lottieLayout.visibility = View.VISIBLE
                 lottieAnimationView.playAnimation()
                 note.name = nameEditText.text.toString()
@@ -161,9 +167,8 @@ class NoteActivity : AppCompatActivity() {
                 }
 
                 AppDatabase.getDatabase(this).NoteDao().insert(note)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+
+               finish()
             }
         }
 
