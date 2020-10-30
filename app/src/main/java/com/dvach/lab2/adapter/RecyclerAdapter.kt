@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.add_task.view.*
 private const val POST_TYPE_HEAD: Int = 0
 private const val POST_TYPE_NOTE: Int = 1
 
-class RecyclerAdapter(var listItems: List<Item>, var listener:onItemClick, var listener2:onCheck): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerAdapter(var listItems: ArrayList<Item>, var listener:onItemClick, var listener2:onCheck): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface onItemClick{
         fun noteClick(note: Note)
@@ -67,6 +67,12 @@ class RecyclerAdapter(var listItems: List<Item>, var listener:onItemClick, var l
 
     override fun getItemCount(): Int{
         return listItems.size
+    }
+
+    fun deleteItem(position: Int) {
+        listItems.removeAt(position)
+
+        notifyItemRemoved(position)
     }
 
     override fun getItemViewType(position: Int): Int {

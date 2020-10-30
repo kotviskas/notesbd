@@ -14,16 +14,18 @@ class SplashActivity : AppCompatActivity() {
     var savedEmail: String? = null
     var savedPassword: String? = null
     var kaef: Boolean = false
+    var user:User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         loadText()
         if (kaef == true) {
-            if (AppDatabase.getDatabase(this).userDao()
-                    .getUser(savedEmail!!, savedPassword!!) != null
-            ) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+            user = AppDatabase.getDatabase(this).userDao()
+                .getUser(savedEmail!!, savedPassword!!)
+            if ( user!= null) {
+                val i = Intent(this, MainActivity::class.java)
+                i.putExtra("user",user)
+                startActivity(i)
             } else {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

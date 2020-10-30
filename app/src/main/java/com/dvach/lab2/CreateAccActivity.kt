@@ -5,11 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_create_acc.*
 import kotlinx.android.synthetic.main.activity_create_acc.emailText
 import kotlinx.android.synthetic.main.activity_create_acc.passwordText
-import kotlinx.android.synthetic.main.activity_login.*
+
 
 
 class CreateAccActivity : AppCompatActivity() {
@@ -19,20 +18,49 @@ class CreateAccActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_acc)
         var user=User()
 
-      //  var kaef: Boolean = 0
+
 
 
         addUserBtn.setOnClickListener {
+            if (AppDatabase.getDatabase(this).userDao().getUserByEmail(emailText.text.toString()) == null) {
+                var validation = InputValidation(this)
+                if (validation.isInputEditTextEmail(
+                        emailText,
+                        emaiInputLayout,
+                        "Неправильный e-mail"
+                    ) && validation.isInputEditTextFilled(
+                        nameText,
+                        textInputLayout2,
+                        "Введите свое имя"
+                    )
+                    && validation.isInputEditTextFilled(
+                        passwordText,
+                        textInputLayout3,
+                        "Введите пароль"
+                    ) && validation.isInputEditTextFilled(
+                        repasswordEditText,
+                        textInputLayout4,
+                        "Повторите пароль"
+                    )
+                    && validation.isInputEditTextMatches(
+                        passwordText,
+                        repasswordEditText,
+                        textInputLayout4,
+                        "Пароли не совпадают"
+                    )
+                ) {
 
-            user.email = emailText.text.toString();
-            user.name = nameText.text.toString();
-            user.password = passwordText.text.toString();
-                AppDatabase.getDatabase(this).userDao().insert(user)
-            saveText()
-            val i: Intent
-            i = Intent(this, MainActivity::class.java)
-            startActivity(i)
+                    user.email = emailText.text.toString();
+                    user.userName = nameText.text.toString();
+                    user.password = passwordText.text.toString();
+                    AppDatabase.getDatabase(this).userDao().insert(user)
+                    saveText()
+                    val i = Intent(this, MainActivity::class.java)
+                    i.putExtra("user", user)
+                    startActivity(i)
+                }
             }
+        }
 
         loginTextView.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))

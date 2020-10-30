@@ -51,7 +51,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/emaiInputLayout"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,13 +84,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:hint="Фамилия"
+        android:hint="Имя"
         android:textColorHint="@color/grayHint"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/emaiInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameText"
@@ -145,6 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repasswordEditText"
             style="@style/InputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

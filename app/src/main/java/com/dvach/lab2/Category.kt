@@ -11,6 +11,7 @@ import java.security.AccessControlContext
 class Category {
     @PrimaryKey
     var categoryName: String = ""
+    @Embedded lateinit var categoryUser : User
     //  @PrimaryKey(autoGenerate = true)
     //   var id: Long = 0
 }
@@ -23,10 +24,10 @@ interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(category: Category?)
 
-    @Query("SELECT * FROM Category")
+    @Query("SELECT categoryName FROM Category")
     fun getAllNames(): List<String>
 
     @Transaction
-    @Query("SELECT * FROM Category")
-    fun getCategoriesWithNotes(): List<CategoryWithNotes>
+    @Query("SELECT * FROM Category WHERE userId =:userId")
+    fun getCategoriesWithNotes(userId: Long): List<CategoryWithNotes>
 }

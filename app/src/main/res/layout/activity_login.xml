@@ -30,7 +30,7 @@
 
                 android:layout_marginEnd="290dp"
                 android:fontFamily="@font/nunito"
-                android:text="Создать аккаунт"
+                android:text="Войти"
                 android:textAlignment="viewStart"
                 android:textColor="@color/toolBarColor"
                 android:textSize="20sp" />
@@ -51,14 +51,14 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/emaiInputLayout"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        android:hint="E-mail"
+        android:hint="Электронная почта"
         android:textColorHint="@color/grayHint"
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/emaiInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordText"
@@ -97,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
+            android:inputType="textPassword"
             android:textColor="@color/darkGrayColor"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +126,7 @@
         android:layout_marginEnd="16dp"
         android:layout_weight="1"
         android:fontFamily="@font/nunito"
-        android:text="СОЗДАТЬ"
+        android:text="ВОЙТИ"
         app:backgroundTint="@color/gray29"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"

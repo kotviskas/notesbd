@@ -130,7 +130,6 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito"
                     android:text="Выполнено"
-                    android:textColor="@color/greenCheck"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/noteNameTextView" />
 

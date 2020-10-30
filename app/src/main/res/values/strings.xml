@@ -3,6 +3,8 @@
     <string name="noplans">Пока что у вас нет никаких дел.\n Хорошего отдыха!</string>
     <string name="loginpdch">Есть аккаунт? <u><font color='#1554F6'>Войти</font></u></string>
     <string name="createpdch">Нет аккаунта? <font color='#1554F6'>Зарегистрироваться</font></string>
+    <string name="done"><font color='#69B76C'>Выполнено</font></string>
+    <string name="nedone"><font color='#F4574B'>Не выполнено</font></string>
 
     <string-array name="prioritet">
         <item>Срочно</item>

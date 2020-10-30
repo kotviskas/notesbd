@@ -15,12 +15,20 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         loginBtn.setOnClickListener {
-            if (AppDatabase.getDatabase(this).userDao()
-                    .getUser(emailText.text.toString(), passwordText.text.toString()) != null
-            ) {
-                saveText()
-                startActivity(Intent(this, MainActivity::class.java))
+            var validation= InputValidation(this)
+
+            if (validation.isInputEditTextEmail(emailText,emaiInputLayout,"Введите e-mail") && validation.isInputEditTextFilled(passwordText,textInputLayout3,"Введите пароль")) {
+                var user = AppDatabase.getDatabase(this).userDao()
+                    .getUser(emailText.text.toString(), passwordText.text.toString())
+                if (user != null
+                ) {
+                    saveText()
+                    val i = Intent(this, MainActivity::class.java)
+                    i.putExtra("user", user)
+                    startActivity(i)
+                }
             }
 
         }

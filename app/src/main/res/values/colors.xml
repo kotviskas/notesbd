@@ -3,6 +3,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
     <color name="basicBlack">#000000</color>
     <color name="hintColor54">#8A000000</color>
     <color name="greenCard">#52CC57</color>
@@ -17,5 +18,6 @@
     <color name="darkGrayColor">#202020</color>
     <color name="gray29">#292929</color>
     <color name="whiteBack">#FAFAFA</color>
+    <color name="back">#EFEFEF</color>
     <color name="boxColor">#1554F6</color>
 </resources>
