@@ -12,34 +12,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Добавить категорию"
+        android:elevation="0dp"
+        android:fontFamily="@font/nunito"
+        android:text="@string/savecat"
         android:textColor="@color/basicBlack"
         android:textSize="13sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:boxStrokeColor="@color/boxColor"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="2dp"
         app:counterEnabled="true"
         app:counterMaxLength="140"
-        app:counterTextColor="@color/hintColor54">
+        app:counterTextColor="@color/hintColor54"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/addCategoryEditText"
             android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/whiteBack"
-            android:maxLength="140"
-            android:paddingLeft="0dp"
-            android:paddingBottom="0dp"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
 
-
-            android:textColor="@color/basicBlack"
-            android:textColorHint="@color/hintColor54"
-            android:textSize="16sp" />
+            android:paddingEnd="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,8 +55,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="11dp"
             android:fontFamily="@font/nunito"
-            android:paddingBottom="8dp"
-            android:text="ОТМЕНА"
+            android:paddingBottom="16dp"
+            android:text="@string/canc"
             android:textColor="@color/boxColor"
             app:layout_constraintEnd_toStartOf="@+id/saveTextView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,11 +67,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/nunito"
-            android:paddingBottom="8dp"
-            android:text="СОХРАНИТЬ"
+            android:paddingBottom="16dp"
+            android:text="@string/cavecet"
             android:textColor="@color/boxColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
 
 class NoteActivity : AppCompatActivity() {
     var note = Note()
-
+    var kaef: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
@@ -29,12 +29,13 @@ class NoteActivity : AppCompatActivity() {
         lottieAnimationView.playAnimation()
 
 
-        var kaef: Boolean = false
         var list2 = ArrayList<String>(Arrays.asList(*resources.getStringArray(R.array.prioritet)))
         var category = Category()
+
         var categoryList: ArrayList<String> =
-            AppDatabase.getDatabase(this).CategoryDao().getAllNames() as ArrayList<String>
-        if (kaef == false) {
+            AppDatabase.getDatabase(this).CategoryDao()
+                .getAllNames((intent.getSerializableExtra("user") as User).userId) as ArrayList<String>
+        if (categoryList.size == 0) {
             categoryList.add("Категория задачи")
         }
         val intent = intent
@@ -42,23 +43,24 @@ class NoteActivity : AppCompatActivity() {
             note = intent.getSerializableExtra("note") as Note
             nameEditText.setText(note.name)
             noteTextEditText.setText(note.text)
+            dateEditText.setText(note.date)
             kaef = true
-            var flag : Int = 0
-            var index:Int = 0
+            var flag: Int = 0
+            var index: Int = 0
             list2.forEach {
-                if(list2[flag] == note.prioritet){
+                if (list2[flag] == note.prioritet) {
                     index = flag
                 }
                 flag++
             }
-            var str:String = list2[0]
+            var str: String = list2[0]
             list2[index] = str
             list2[0] = note.prioritet
-           // list2.add(0, note.prioritet)
+            // list2.add(0, note.prioritet)
             flag = 0
             index = 0
             categoryList.forEach {
-                if(categoryList[flag] == note.category){
+                if (categoryList[flag] == note.category) {
                     index = flag
                 }
                 flag++
@@ -72,8 +74,6 @@ class NoteActivity : AppCompatActivity() {
 
 
         // categorySpinner.selectedItem = note.category
-
-
 
 
         var spinner: Spinner = findViewById(R.id.prioritetSpinner)
@@ -104,11 +104,17 @@ class NoteActivity : AppCompatActivity() {
 
         addDate.setOnClickListener {
 
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                dateEditText.setText("" + dayOfMonth + "." + month + "." + year)
+            val dpd = DatePickerDialog(
+                this,
+                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    dateEditText.setText("" + dayOfMonth + "." + month + "." + year)
 
-            }, year, month, day)
-                dpd.show()
+                },
+                year,
+                month,
+                day
+            )
+            dpd.show()
 
 
         }
@@ -127,10 +133,11 @@ class NoteActivity : AppCompatActivity() {
                 category.categoryUser = intent.getSerializableExtra("user") as User
                 AppDatabase.getDatabase(this).CategoryDao().insert(category)
                 categoryList.add(category.categoryName)
-                if (!kaef){
+                if (categoryList[0] == "Категория задачи") {
                     categoryList.removeAt(0)
+                    adapter2.notifyDataSetChanged();
                 }
-                kaef = true
+
                 adapter2.notifyDataSetChanged();
             }
 
@@ -142,9 +149,21 @@ class NoteActivity : AppCompatActivity() {
         backImg.setOnClickListener { finish() }
 
         saveNoteBtn.setOnClickListener {
-            var validation= InputValidation(this)
-            if(validation.isEditTextFilled(nameEditText,"Введите заголовок") && validation.isInputEditTextFilled(noteTextEditText,emaiInputLayout,"Добавьте описание")
-                && validation.isSpinnerFilled(spinner2, "") && note.category != "Категория задачи") {
+            var validation = InputValidation(this)
+            if (validation.isInputEditTextFilled(
+                    nameEditText,
+                    textInputLayout,
+                    "Введите заголовок"
+                ) && validation.isInputEditTextFilled(
+                    noteTextEditText,
+                    emaiInputLayout,
+                    "Добавьте описание"
+                )
+                && validation.isSpinnerFilled(
+                    spinner2,
+                    ""
+                ) && spinner2.selectedItem.toString() != "Категория задачи"
+            ) {
                 lottieLayout.visibility = View.VISIBLE
                 lottieAnimationView.playAnimation()
                 note.name = nameEditText.text.toString()
@@ -167,8 +186,12 @@ class NoteActivity : AppCompatActivity() {
                 }
 
                 AppDatabase.getDatabase(this).NoteDao().insert(note)
+                //val i: Intent
+                //i = Intent(this, MainActivity::class.java)
 
-               finish()
+                //i.putExtra("user", intent.getSerializableExtra("user") as User)
+                // startActivity(i)
+                finish()
             }
         }
 

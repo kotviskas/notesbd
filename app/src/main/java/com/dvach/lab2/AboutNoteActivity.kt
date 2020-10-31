@@ -15,33 +15,32 @@ class AboutNoteActivity : AppCompatActivity() {
 
         val intent = intent
         val note = intent.getSerializableExtra("note") as Note
-        var user= intent.getSerializableExtra("user") as User
-       // var note = AppDatabase.getDatabase(this).NoteDao().getByName(noteName.toString())
+        var user = intent.getSerializableExtra("user") as User
+        // var note = AppDatabase.getDatabase(this).NoteDao().getByName(noteName.toString())
 
         noteNameTextView.text = note.name
         categoryNameTextView.text = note.category
         textTextView.text = note.text
-        if (note.check == false){
+        if (note.check == false) {
             checkTextView.text = getString(R.string.nedone)
             checkTextView.setTextColor(getColor(R.color.redCard))
 
-        }
-        else {
+        } else {
             checkTextView.text = getString(R.string.done)
             checkTextView.setTextColor(getColor(R.color.greenCard))
         }
-        dateTextView.text = note.date
+        var str = "До " + note.date
+        dateTextView.text = str
         prioritetTextView.text = note.prioritet
         changeImageView.setOnClickListener {
             val i = Intent(this, NoteActivity::class.java)
-            i.putExtra("note",note)
-            i.putExtra("user",user)
+            i.putExtra("note", note)
+            i.putExtra("user", user)
 
             startActivity(i)
             finish()
 
         }
-
 
 
     }

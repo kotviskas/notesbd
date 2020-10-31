@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
     var savedEmail: String? = null
     var savedPassword: String? = null
     var kaef: Boolean = false
-    var user:User? = null
+    var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -22,16 +22,15 @@ class SplashActivity : AppCompatActivity() {
         if (kaef == true) {
             user = AppDatabase.getDatabase(this).userDao()
                 .getUser(savedEmail!!, savedPassword!!)
-            if ( user!= null) {
+            if (user != null) {
                 val i = Intent(this, MainActivity::class.java)
-                i.putExtra("user",user)
+                i.putExtra("user", user)
                 startActivity(i)
             } else {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else {
+        } else {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -40,10 +39,10 @@ class SplashActivity : AppCompatActivity() {
 
     fun loadText() {
         sPref = getSharedPreferences("kek", Context.MODE_PRIVATE)
-        if(sPref.contains("userEmail") && sPref.contains("userPassword")) {
+        if (sPref.contains("userEmail") && sPref.contains("userPassword")) {
 
             savedEmail = sPref.getString("userEmail", "")
-            savedPassword = sPref.getString("userPassword","")
+            savedPassword = sPref.getString("userPassword", "")
             kaef = true
             //   Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show()
         }

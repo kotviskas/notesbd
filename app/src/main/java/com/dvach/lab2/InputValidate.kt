@@ -32,7 +32,7 @@ class InputValidation(private val context: Context) {
 
     fun isEditTextFilled(
         editText: EditText,
-       // textInputLayout: TextInputLayout,
+        // textInputLayout: TextInputLayout,
         message: String?
     ): Boolean {
         val value = editText.text.toString().trim { it <= ' ' }
@@ -42,7 +42,7 @@ class InputValidation(private val context: Context) {
             hideKeyboardFrom(editText)
             return false
         } else {
-           // textInputLayout.isErrorEnabled = false
+            // textInputLayout.isErrorEnabled = false
 
         }
         return true
@@ -81,13 +81,14 @@ class InputValidation(private val context: Context) {
         }
         return true
     }
+
     fun isSpinnerFilled(
         spinner: Spinner,
         // textInputLayout: TextInputLayout,
         message: String?
     ): Boolean {
-      //  val value = editText.text.toString().trim { it <= ' ' }
-       // val value = spinner.selectedItem.toString().trim { it <= ' ' }
+        //  val value = editText.text.toString().trim { it <= ' ' }
+        // val value = spinner.selectedItem.toString().trim { it <= ' ' }
         if (spinner.selectedItem == null) {
             hideKeyboardFrom(spinner)
             return false

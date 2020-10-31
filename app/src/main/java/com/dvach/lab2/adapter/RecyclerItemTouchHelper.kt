@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dvach.lab2.AppDatabase
 
 
-class RecyclerItemTouchHelper(var adapter: RecyclerAdapter): ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+class RecyclerItemTouchHelper(var adapter: RecyclerAdapter) :
+    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -17,7 +18,7 @@ class RecyclerItemTouchHelper(var adapter: RecyclerAdapter): ItemTouchHelper.Sim
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        var pos:Int = viewHolder.adapterPosition
+        var pos: Int = viewHolder.adapterPosition
         adapter.deleteItem(pos)
 
     }

@@ -30,7 +30,7 @@
 
                 android:layout_marginEnd="290dp"
                 android:fontFamily="@font/nunito"
-                android:text="Войти"
+                android:text="@string/toollog"
                 android:textAlignment="viewStart"
                 android:textColor="@color/toolBarColor"
                 android:textSize="20sp" />
@@ -58,7 +58,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        android:hint="Электронная почта"
+        android:hint="@string/mail"
         android:textColorHint="@color/grayHint"
         app:boxStrokeColor="@color/boxColor"
         app:hintEnabled="true"
@@ -73,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
+
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:hint="Пароль"
+        android:hint="@string/pasw"
         android:textColorHint="@color/grayHint"
         app:boxStrokeColor="@color/boxColor"
         app:hintEnabled="true"
@@ -130,7 +131,7 @@
         android:layout_marginEnd="16dp"
         android:layout_weight="1"
         android:fontFamily="@font/nunito"
-        android:text="ВОЙТИ"
+        android:text="@string/loggin"
         app:backgroundTint="@color/gray29"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"

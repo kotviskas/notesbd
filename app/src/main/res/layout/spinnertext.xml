@@ -8,5 +8,4 @@
     android:paddingLeft="16dp"
     android:paddingTop="6dp"
     android:paddingBottom="6dp"
-    android:text="TextView"
     android:textColor="@color/toolBarColor" />

@@ -11,6 +11,7 @@ class User : Serializable {
     var userName: String? = null
     var email: String? = null
     var password: String? = null
+
     @PrimaryKey(autoGenerate = true)
     var userId: Long = 0
 }

@@ -6,7 +6,7 @@ import java.io.Serializable
 
 
 @Entity
-class Note : Serializable{
+class Note : Serializable {
 
     var name: String = ""
     var text: String = ""
@@ -15,7 +15,9 @@ class Note : Serializable{
     var prioritet: String = ""
     var check: Boolean = false
     var color: Int = R.color.colorAccent
-    @Embedded lateinit var user: User
+    @Embedded
+    lateinit var user: User
+
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
 }

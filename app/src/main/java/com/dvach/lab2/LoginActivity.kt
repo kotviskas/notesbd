@@ -7,6 +7,7 @@ import android.content.SharedPreferences.Editor
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dvach.lab2.models.MD5Hash
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -17,11 +18,23 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         loginBtn.setOnClickListener {
-            var validation= InputValidation(this)
+            var validation = InputValidation(this)
 
-            if (validation.isInputEditTextEmail(emailText,emaiInputLayout,"Введите e-mail") && validation.isInputEditTextFilled(passwordText,textInputLayout3,"Введите пароль")) {
+            if (validation.isInputEditTextEmail(
+                    emailText,
+                    emaiInputLayout,
+                    "Введите e-mail"
+                ) && validation.isInputEditTextFilled(
+                    passwordText,
+                    textInputLayout3,
+                    "Введите пароль"
+                )
+            ) {
                 var user = AppDatabase.getDatabase(this).userDao()
-                    .getUser(emailText.text.toString(), passwordText.text.toString())
+                    .getUser(
+                        emailText.text.toString(),
+                        MD5Hash.toMD5Hash(passwordText.text.toString())
+                    )
                 if (user != null
                 ) {
                     saveText()
@@ -41,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         sPref = getSharedPreferences("kek", Context.MODE_PRIVATE)
         val ed: Editor = sPref.edit()
         ed.putString("userEmail", emailText.text.toString())
-        ed.putString("userPassword", passwordText.text.toString())
+        ed.putString("userPassword", MD5Hash.toMD5Hash(passwordText.text.toString()))
         ed.apply()
         //Toast.makeText(this, "Text saved", Toast.LENGTH_SHORT).show()
     }

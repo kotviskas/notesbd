@@ -5,6 +5,28 @@
     <string name="createpdch">Нет аккаунта? <font color='#1554F6'>Зарегистрироваться</font></string>
     <string name="done"><font color='#69B76C'>Выполнено</font></string>
     <string name="nedone"><font color='#F4574B'>Не выполнено</font></string>
+    <string name="toolbar">Создать аккаунт</string>
+    <string name="e_mail">E-mail</string>
+    <string name="name">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="repas">Повторите пароль</string>
+    <string name="create">СОЗДАТЬ</string>
+    <string name="toollog">Войти</string>
+    <string name="mail">Электронная почта</string>
+    <string name="pasw">Пароль</string>
+    <string name="loggin">ВОЙТИ</string>
+    <string name="tooladd">Добавить заметку</string>
+    <string name="namenote">Заголовок</string>
+    <string name="textetxe">Описание</string>
+    <string name="srok">Срок выполнения задачи</string>
+    <string name="casw">Сохранение...</string>
+    <string name="savebtn">СОХРАНИТЬ</string>
+    <string name="headt">Заголовок</string>
+    <string name="headtask">Заголовок</string>
+    <string name="neheadt">Подзаголовок</string>
+    <string name="savecat">Добавить категорию</string>
+    <string name="canc">ОТМЕНА</string>
+    <string name="cavecet">СОХРАНИТЬ</string>
 
     <string-array name="prioritet">
         <item>Срочно</item>

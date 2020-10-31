@@ -10,7 +10,8 @@
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
     app:cardBackgroundColor="@color/yellowCard"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/nunito"
-            android:text="Заголовок"
+            android:text="@string/headtask"
             android:textAlignment="viewStart"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -39,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito"
             android:paddingBottom="12dp"
-            android:text="Подзаголовок"
+            android:text="@string/neheadt"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

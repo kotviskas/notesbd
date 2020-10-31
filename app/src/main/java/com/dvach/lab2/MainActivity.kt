@@ -5,7 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -17,14 +19,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), RecyclerAdapter.onItemClick, RecyclerAdapter.onCheck {
     lateinit var sPref: SharedPreferences
-    lateinit var user:User
+    lateinit var user: User
+    var flag = false
+    lateinit var items: ArrayList<Item>
+    lateinit var adapter: RecyclerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        user= intent.getSerializableExtra("user") as User
+        user = intent.getSerializableExtra("user") as User
         floatingActionButton.setOnClickListener {
             val i = Intent(this, NoteActivity::class.java)
-            i.putExtra("user",user)
+            i.putExtra("user", user)
             startActivity(i)
         }
         exitImage.setOnClickListener {
@@ -44,10 +49,14 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.onItemClick, RecyclerA
     }
 
     override fun onResume() {
+        //if (flag == true) {
+
+        // }
+        flag == true
         super.onResume()
-        var items = ArrayList<Item>()
+        items = ArrayList<Item>()
 
-
+        //   Toast.makeText(this,"sdas",Toast.LENGTH_LONG).show()
         var list = AppDatabase.getDatabase(this).CategoryDao().getCategoriesWithNotes(user.userId)
         list.forEach {
 
@@ -70,7 +79,7 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.onItemClick, RecyclerA
         }
 
         recyclerView.layoutManager = GridLayoutManager(this, 1)
-        var adapter: RecyclerAdapter = RecyclerAdapter(items, this, this)
+        adapter = RecyclerAdapter(items, this, this)
         recyclerView.adapter = adapter
 
         val itemTouchHelperCallback: ItemTouchHelper.SimpleCallback =
@@ -87,10 +96,22 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.onItemClick, RecyclerA
                     viewHolder: RecyclerView.ViewHolder,
                     direction: Int
                 ) {
-                    var pos:Int = viewHolder.adapterPosition
-                    AppDatabase.getDatabase(application).NoteDao().delete(items[pos].note_object as Note)
-                    adapter.deleteItem(pos)
 
+
+                    var pos: Int = viewHolder.adapterPosition
+
+                    if (items[pos].type == 1) {
+                        AppDatabase.getDatabase(application).NoteDao()
+                            .delete(items[pos].note_object as Note)
+                        items.removeAt(pos)
+                        //adapter.deleteItem(pos)
+
+                        adapter.notifyDataSetChanged()
+                        // adapter.notifyItemRemoved(pos)
+
+
+                    }
+                    //  adapter.notifyItemRemoved(pos)
                 }
 
             }

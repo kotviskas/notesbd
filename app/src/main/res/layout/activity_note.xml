@@ -43,7 +43,7 @@
 
                     android:layout_marginStart="34dp"
                     android:fontFamily="@font/nunito"
-                    android:text="Добавить заметку"
+                    android:text="@string/tooladd"
                     android:textAlignment="viewStart"
                     android:textColor="@color/toolBarColor"
                     android:textSize="20sp"
@@ -71,7 +71,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/saveNoteBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -88,24 +88,41 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito"
-                android:text="Заголовок"
+                android:text="@string/namenote"
                 android:textColor="@color/basicBlack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/nameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/boxColor"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidthFocused="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#FFFFFF"
+                    android:fontFamily="@font/nunito"
+                    android:paddingStart="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@color/toolBarColor" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emaiInputLayout"
@@ -113,17 +130,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:hint="Описание"
+                android:hint="@string/textetxe"
                 android:textColorHint="@color/grayHint"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/gray29"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="120"
+                app:counterTextAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:counterTextColor="@color/basicBlack"
                 app:hintEnabled="true"
+                app:hintTextColor="@color/gray29"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameEditText">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/noteTextEditText"
@@ -146,7 +172,7 @@
                 android:layout_marginEnd="20dp"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="Срок выполнения задачи"
+                android:hint="@string/srok"
                 android:inputType="date"
                 android:longClickable="false"
                 app:layout_constraintEnd_toStartOf="@+id/addDate"
@@ -172,11 +198,26 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:animateLayoutChanges="false"
                 android:background="@drawable/spinner_shape"
                 android:backgroundTint="@color/back"
+                android:elevation="2dp"
+                android:popupBackground="@drawable/new_spinner_shape"
+                android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toStartOf="@+id/addCategory"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:elevation="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/categorySpinner"
+                app:layout_constraintEnd_toEndOf="@+id/categorySpinner"
+                app:layout_constraintTop_toTopOf="@+id/categorySpinner"
+                app:srcCompat="@drawable/spinicon" />
 
             <Spinner
                 android:id="@+id/prioritetSpinner"
@@ -186,9 +227,21 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/spinner_shape"
+                android:elevation="2dp"
                 app:layout_constraintEnd_toStartOf="@+id/addCategory"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:elevation="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/prioritetSpinner"
+                app:layout_constraintEnd_toEndOf="@+id/prioritetSpinner"
+                app:layout_constraintTop_toTopOf="@+id/prioritetSpinner"
+                app:srcCompat="@drawable/spinicon" />
 
             <ImageView
                 android:id="@+id/addCategory"
@@ -200,6 +253,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/dateEditText"
                 app:srcCompat="@drawable/add_box_24px_outlined" />
 
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prioritetSpinner" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
@@ -210,13 +272,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
         android:layout_weight="1"
         android:fontFamily="@font/nunito"
-        android:text="СОХРАНИТЬ"
+        android:text="@string/savebtn"
         app:backgroundTint="@color/gray29"
         app:cornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -248,7 +309,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="21dp"
             android:fontFamily="@font/nunito"
-            android:text="Сохранение..."
+            android:text="@string/casw"
             android:textColor="@color/basicBlack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

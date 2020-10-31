@@ -6,7 +6,7 @@
     android:fontFamily="@font/nunito"
     android:paddingTop="16dp"
     android:paddingBottom="8dp"
-    android:text="Заголовок"
+    android:text="@string/headt"
     android:textColor="@color/basicBlack"
     android:textSize="24sp"
     android:textStyle="bold" />
